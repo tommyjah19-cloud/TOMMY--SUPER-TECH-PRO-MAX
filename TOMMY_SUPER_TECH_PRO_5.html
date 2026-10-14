@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ny">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07130f">
+<title>TOMMY SUPER TECH PRO 5.0</title>
+<style>
+:root{
+  --bg:#07130f;--panel:#0d2018;--panel2:#10291e;--line:#234b37;
+  --green:#49f0a0;--mint:#b8f5d5;--text:#e8f5ed;--muted:#9ab8a7;
+  --blue:#75c9ff;--amber:#ffd27a;--red:#ff8d8d;--radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0%,#123524 0,transparent 34%),var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+button,a,input,textarea{font:inherit}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer}
+.layout{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+.sidebar{background:#081911;border-right:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;gap:12px;align-items:center;padding:5px 8px 24px}
+.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#52f5a5,#168c58);display:grid;place-items:center;color:#052013;font-size:23px;font-weight:900}
+.brand strong{display:block;letter-spacing:.4px;font-size:14px}.brand small{color:var(--muted)}
+.nav-label{font-size:10px;letter-spacing:1.7px;color:#6f9680;padding:18px 10px 8px;font-weight:800}
+.nav a{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;color:var(--muted);margin:3px 0;font-weight:600}
+.nav a:hover,.nav a.active{background:#143624;color:var(--green)}
+.side-note{margin-top:25px;padding:14px;border:1px solid var(--line);border-radius:15px;background:#0c2117;color:var(--muted);font-size:12px}
+main{min-width:0;padding:26px clamp(16px,4vw,48px) 50px;max-width:1500px;width:100%;margin:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:28px}
+.eyebrow{color:var(--green);font-size:11px;letter-spacing:2px;font-weight:800}
+h1{font-size:clamp(25px,4vw,38px);line-height:1.15;margin:6px 0}
+.sub{color:var(--muted);margin:0}
+.clock{border:1px solid var(--line);background:#0b1d14;padding:10px 14px;border-radius:13px;color:var(--mint);font-size:13px;white-space:nowrap}
+.hero{border:1px solid #286444;border-radius:25px;padding:clamp(22px,4vw,38px);background:linear-gradient(115deg,#123b27,#0d2419 60%,#102d20);position:relative;overflow:hidden}
+.hero:after{content:"⚡";position:absolute;right:5%;top:4%;font-size:clamp(90px,17vw,190px);opacity:.06}
+.hero h2{font-size:clamp(23px,3vw,32px);margin:5px 0 8px;max-width:700px}
+.hero p{color:#b8d6c4;max-width:650px;margin:0 0 20px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid #3b805a;background:#143d29;color:var(--text);border-radius:12px;padding:10px 15px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.btn:hover{filter:brightness(1.18);transform:translateY(-1px)}
+.btn.primary{background:var(--green);border-color:var(--green);color:#062015}
+.btn.ghost{background:transparent}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0 30px}
+.stat,.card{background:linear-gradient(145deg,#0e2419,#0a1b13);border:1px solid var(--line);border-radius:var(--radius)}
+.stat{padding:16px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{font-size:23px;color:var(--green)}
+.section{margin-top:32px;scroll-margin-top:20px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:13px}
+.section-head h2{font-size:21px;margin:0}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.card{padding:20px;min-width:0}
+.card h3{margin:0 0 7px;font-size:17px}.card p{color:var(--muted);margin:6px 0 13px}
+.icon{font-size:24px;margin-bottom:8px}
+.badge{display:inline-block;font-size:10px;letter-spacing:1px;font-weight:800;color:var(--green);background:#143725;border:1px solid #24583b;padding:4px 8px;border-radius:30px;margin-bottom:9px}
+ul,ol{padding-left:20px;color:#c3d9cb}li{margin:7px 0}
+textarea,input{width:100%;background:#06130d;color:var(--text);border:1px solid #315a42;border-radius:11px;padding:12px;margin:6px 0 10px;outline:none}
+textarea:focus,input:focus{border-color:var(--green);box-shadow:0 0 0 3px #49f0a01c}
+textarea{min-height:110px;resize:vertical}
+.status{background:#102d1e;border:1px solid #28543a;color:#c4ead2;padding:10px 12px;border-radius:10px;margin-top:10px;font-size:13px}
+.button-row{display:flex;flex-wrap:wrap;gap:8px}
+.small{font-size:12px;color:var(--muted)}
+.code-preview{width:100%;height:190px;background:#fff;border:0;border-radius:10px}
+.term-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.term{background:#0a1a12;border:1px solid var(--line);padding:12px;border-radius:12px}
+.term b{color:var(--green);display:block}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:360px}
+.pad button{height:54px;border:1px solid #36734f;border-radius:10px;background:#123321;color:var(--green);font-size:20px}
+footer{text-align:center;color:#769784;padding:40px 10px 10px;font-size:12px}
+.mobile-menu{display:none}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;height:auto;padding:12px 14px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:2px 5px 10px}.nav{display:flex;overflow-x:auto;gap:4px}.nav a{white-space:nowrap;padding:8px 10px;font-size:12px}.nav-label,.side-note{display:none}.stats{grid-template-columns:repeat(2,1fr)}main{padding-top:18px}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.clock{white-space:normal}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.card{padding:16px}.hero{border-radius:19px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">T</div><div><strong>TOMMY SUPER TECH</strong><small>PRO • VERSION 5.0</small></div></div>
+  <div class="nav-label">MAIN MENU</div>
+  <nav class="nav">
+    <a class="active" href="#home">⌂ Dashboard</a>
+    <a href="#network">◎ Network Master</a>
+    <a href="#cyber">◈ Cybersecurity</a>
+    <a href="#coding">⌘ Coding Studio</a>
+    <a href="#tools">⚙ Phone Tools</a>
+    <a href="#notes">▤ Notes</a>
+  </nav>
+  <div class="nav-label">LEARNING</div>
+  <nav class="nav">
+    <a href="#voice">🎙 Voice Lab</a>
+    <a href="#beats">♫ Beat Studio</a>
+    <a href="#safety">✓ Safety Center</a>
+  </nav>
+  <div class="side-note"><b style="color:var(--mint)">LEARN • BUILD • PROTECT</b><br>Technology learning hub yanu. Zida zina zimagwira offline; zina zimafuna internet kapena browser permissions.</div>
+</aside>
+
+<main>
+<header class="topbar" id="home">
+  <div><div class="eyebrow">PERSONAL TECHNOLOGY HUB</div><h1>Welcome back, Tommy 👋</h1><p class="sub">Phunzirani technology, pangani ma project, ndipo tetezani zipangizo zanu.</p></div>
+  <div class="clock" id="clock">Loading time…</div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">YOUR DIGITAL WORKSPACE</div>
+  <h2>Think smarter. Build better. Stay secure.</h2>
+  <p>TOMMY SUPER TECH PRO imakuthandizani kuphunzira networking, cybersecurity, coding ndi kugwiritsa ntchito bwino Redmi 12 yanu.</p>
+  <div class="actions"><a class="btn primary" href="#network">Start learning →</a><a class="btn ghost" href="#coding">Open Coding Studio</a></div>
+</section>
+
+<div class="stats">
+  <div class="stat"><span>Learning modules</span><strong>06</strong></div>
+  <div class="stat"><span>Practice tools</span><strong>04</strong></div>
+  <div class="stat"><span>Platform</span><strong>Android</strong></div>
+  <div class="stat"><span>Version</span><strong>5.0 PRO</strong></div>
+</div>
+
+<section class="section" id="network">
+ <div class="section-head"><div><div class="eyebrow">MODULE 01</div><h2>🌐 Network Master</h2><p>Phunzirani maziko a ma network ndi chitetezo chake.</p></div><span class="badge">BEGINNER → INTERMEDIATE</span></div>
+ <div class="grid">
+  <article class="card"><div class="icon">🧠</div><h3>Networking Fundamentals</h3><p>Network ndi kulumikizana kwa zipangizo kuti zitumizane data.</p>
+   <div class="term-grid">
+    <div class="term"><b>IP Address</b><span class="small">Adiresi yozindikiritsa chipangizo pa network.</span></div>
+    <div class="term"><b>DNS</b><span class="small">Imathandiza kupeza webusaiti pogwiritsa ntchito dzina lake.</span></div>
+    <div class="term"><b>DHCP</b><span class="small">Imapereka ma IP address kwa zipangizo pa network zambiri.</span></div>
+    <div class="term"><b>Router</b><span class="small">Imalumikiza ndi kutsogolera traffic pakati pa ma network.</span></div>
+    <div class="term"><b>LAN / WAN</b><span class="small">Network ya malo ochepa / yolumikiza madera akutali.</span></div>
+    <div class="term"><b>Firewall</b><span class="small">Imasefa traffic potsatira malamulo a chitetezo.</span></div>
+   </div>
+  </article>
+  <article class="card"><div class="icon">📡</div><h3>Wi-Fi Security Checklist</h3><p>Malangizo otetezera router ndi Wi-Fi yanu.</p>
+   <ul><li>Gwiritsani ntchito password yolimba komanso yapadera.</li><li>Sankhani WPA2 kapena WPA3 ngati ilipo.</li><li>Sinthani firmware kudzera pa malangizo a wopanga router.</li><li>Yang'anani zipangizo zolumikizidwa pa router yanu.</li><li>Musagawane password ndi anthu osadalirika.</li></ul>
+   <div class="status">Note: Dashboard iyi si scan router kapena network. Ndi malo ophunzirira okha.</div>
+  </article>
+ </div>
+ <article class="card" style="margin-top:15px"><h3>🧪 Network Knowledge Check</h3><p>Ndi chiyani chomwe chimapereka ma IP address kwa zipangizo pa network zambiri?</p><div class="button-row"><button class="btn" onclick="networkQuiz(false)">A. HTML</button><button class="btn" onclick="networkQuiz(true)">B. DHCP</button></div><div class="status" id="networkResult">Sankhani yankho lanu.</div></article>
+</section>
+
+<section class="section" id="cyber">
+ <div class="section-head"><div><div class="eyebrow">MODULE 02</div><h2>🛡️ Hacking Master — Ethical Cybersecurity</h2><p>Phunzirani kuzindikira zoopsa ndi kuteteza machitidwe anu.</p></div><span class="badge">DEFENSIVE LEARNING</span></div>
+ <div class="grid">
+  <article class="card"><div class="icon">🔐</div><h3>Cybersecurity Path</h3><ol><li>Account safety: password ndi 2-step verification.</li><li>Networking: IP, DNS, router ndi HTTPS.</li><li>Web basics: HTML, CSS, JavaScript ndi cookies.</li><li>Threat awareness: phishing ndi ma app okayikitsa.</li><li>Defensive testing pa labu yanu kapena yomwe mwapatsidwa chilolezo.</li></ol></article>
+  <article class="card"><div class="icon">🧩</div><h3>Password Strength Guide</h3><p>Lembani mawu oyesera kuti muone malangizo a mphamvu yake. Zomwe mulemba sizitumizidwa kulikonse kapena kusungidwa.</p><input id="pwCheck" type="password" placeholder="Type a test password" autocomplete="off"><div class="button-row"><button class="btn" onclick="checkPassword()">Check strength</button><button class="btn ghost" onclick="document.getElementById('pwCheck').value='';document.getElementById('pwResult').textContent='Cleared.'">Clear</button></div><div class="status" id="pwResult">Your result will appear here.</div><p class="small">Musagwiritse ntchito password yanu yeniyeni pa mayeso awa.</p></article>
+ </div>
+ <article class="card" style="margin-top:15px"><h3>⚖️ Professional Ethics</h3><p>Yesani pa chipangizo chanu kapena labu yovomerezeka yokha. Musalowe mu akaunti, Wi-Fi, kapena chipangizo cha munthu wina popanda chilolezo. Mukapeza vuto, nenani kwa mwini wake moyenera.</p></article>
+</section>
+
+<section class="section" id="coding">
+ <div class="section-head"><div><div class="eyebrow">MODULE 03</div><h2>💻 Coding Studio</h2><p>Yesani HTML, CSS ndi JavaScript mu preview yosiyana ndi dashboard.</p></div><span class="badge">BUILD & TEST</span></div>
+ <article class="card"><h3>Code editor</h3><textarea id="code" spellcheck="false"><h2>Hello Tommy!</h2>
+<p>I am learning to code.</p>
+<button onclick="document.getElementById('msg').textContent='It works!'">Test button</button>
+<p id="msg"></p></textarea><div class="button-row"><button class="btn primary" onclick="runCode()">▶ Run preview</button><button class="btn" onclick="resetCode()">Reset example</button></div><p class="small">Preview imagwiritsa ntchito sandboxed iframe. Osayika code yosadziwika.</p><iframe id="preview" class="code-preview" sandbox="allow-scripts" title="Code preview"></iframe></article>
+</section>
+
+<section class="section" id="tools">
+ <div class="section-head"><div><div class="eyebrow">MODULE 04</div><h2>📱 Phone Tools</h2><p>Malangizo othandiza pa Android ndi Redmi 12.</p></div></div>
+ <div class="grid">
+  <article class="card"><div class="icon">⚡</div><h3>Performance Guide</h3><ul><li>Settings → Storage: yang'anani malo otsala.</li><li>Settings → Apps: chotsani ma app osagwiritsidwa ntchito.</li><li>Sinthani Android ndi ma app kuchokera ku malo odalirika.</li><li>Tsekani ma tab osafunika ndi kuyambitsanso foni nthawi zina.</li></ul><div class="status">Browser dashboard siingawonjezere RAM yeniyeni kapena kusintha Android settings yokha.</div></article>
+  <article class="card"><div class="icon">📂</div><h3>File Information</h3><p>Sankhani fayilo kuti muone dzina, mtundu ndi kukula kwake. Fayiloyi siyitumizidwa kulikonse.</p><input type="file" id="filePick"><div class="status" id="fileInfo">Palibe fayilo yomwe yasankhidwa.</div></article>
+ </div>
+</section>
+
+<section class="section" id="voice">
+ <div class="section-head"><div><div class="eyebrow">MODULE 05</div><h2>🎙️ Voice Lab</h2><p>Yesani speech recognition ngati browser yanu ikuthandiza.</p></div></div>
+ <article class="card"><div class="button-row"><button class="btn primary" onclick="startVoice()">🎙 Start listening</button><button class="btn" onclick="stopVoice()">Stop</button></div><textarea id="voiceText" placeholder="Mawu anu adzaoneka pano..." readonly></textarea><div class="status" id="voiceStatus">Voice control sinayambike. Browser ingafunse chilolezo cha microphone.</div></article>
+</section>
+
+<section class="section" id="beats">
+ <div class="section-head"><div><div class="eyebrow">MODULE 06</div><h2>🎵 Mini Beat Studio</h2><p>Sankhani ma step kuti mupange rhythm yosavuta.</p></div></div>
+ <article class="card"><div class="pad" id="beatPad"></div><div class="button-row" style="margin-top:13px"><button class="btn primary" onclick="playBeat()">▶ Play beat</button><button class="btn" onclick="stopBeat()">■ Stop</button></div><div class="status" id="beatStatus">Beat studio yakonzeka.</div></article>
+</section>
+
+<section class="section" id="notes">
+ <div class="section-head"><div><div class="eyebrow">PERSONAL WORKSPACE</div><h2>📝 Offline Notes</h2><p>Zolemba zimasungidwa mu browser ya chipangizochi.</p></div></div>
+ <article class="card"><textarea id="notes" placeholder="Lembani ideas, notes kapena zomwe mwaphunzira..."></textarea><div class="button-row"><button class="btn primary" onclick="saveNotes()">Save notes</button><button class="btn" onclick="loadNotes()">Load notes</button><button class="btn ghost" onclick="clearNotes()">Clear box</button></div><div class="status" id="noteStatus">Zolemba zanu sizitumizidwa ku server.</div></article>
+</section>
+
+<section class="section" id="safety">
+ <div class="section-head"><div><div class="eyebrow">SECURITY CENTER</div><h2>✅ Safety Center</h2><p>Zizolowezi zabwino zotetezera foni ndi akaunti.</p></div></div>
+ <article class="card"><ul><li>Ikani screen lock yolimba pa foni.</li><li>Yatsani 2-step verification pa akaunti zofunika.</li><li>Tsitsani ma app ku Google Play kapena malo odalirika.</li><li>Musatsegule ma link okayikitsa kapena kugawana OTP.</li><li>Onani zilolezo za microphone, camera ndi files.</li><li>Sungani backup ya mafayilo ofunika.</li></ul></article>
+</section>
+
+<footer>© 2026 TOMMY SUPER TECH PRO 5.0 • Made for learning, building and protection.</footer>
+</main>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+function tick(){$('clock').textContent='🕒 '+new Date().toLocaleString()}tick();setInterval(tick,30000);
+function networkQuiz(ok){$('networkResult').textContent=ok?'Correct! DHCP imagawira ma IP address pa network zambiri.':'Try again. DHCP ndiyo imagawira ma IP address pa network zambiri.'}
+function checkPassword(){
+ const p=$('pwCheck').value;let score=0;
+ if(p.length>=12)score++;if(/[a-z]/.test(p)&&/[A-Z]/.test(p))score++;if(/[0-9]/.test(p))score++;if(/[^A-Za-z0-9]/.test(p))score++;
+ let msg=!p?'Chonde lembani mawu oyesera.':score<=1?'Weak: gwiritsani ntchito mawu aatali komanso osavuta kukumbukira koma ovuta kulosera.':score<=3?'Fair: onjezerani kutalika ndi kusakaniza mitundu ya zilembo.':'Good pattern: mawuwo ali ndi zizindikiro zingapo zabwino. Gwiritsani ntchito password yapadera pa akaunti iliyonse.';
+ $('pwResult').textContent=msg;
+}
+const defaultCode=$('code').value;
+function runCode(){ $('preview').srcdoc=$('code').value }
+function resetCode(){$('code').value=defaultCode;runCode()}
+let recognition;
+function startVoice(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){$('voiceStatus').textContent='Browser imeneyi siyithandiza voice recognition. Yesani Chrome yaposachedwa.';return}
+ try{recognition=new SR();recognition.lang='ny-MW';recognition.interimResults=true;recognition.continuous=true;
+ recognition.onresult=e=>{let s='';for(let i=e.resultIndex;i<e.results.length;i++)s+=e.results[i][0].transcript;$('voiceText').value=s};
+ recognition.onerror=e=>$('voiceStatus').textContent='Vuto: '+e.error;
+ recognition.onend=()=>$('voiceStatus').textContent='Kumvetsera kwatha.';
+ recognition.start();$('voiceStatus').textContent='Ikumvetsera...'}catch(e){$('voiceStatus').textContent='Voice control yayamba kale kapena siyikupezeka.'}
+}
+function stopVoice(){if(recognition)recognition.stop();$('voiceStatus').textContent='Yayimitsidwa.'}
+function saveNotes(){try{localStorage.setItem('tommySuperNotes',$('notes').value);$('noteStatus').textContent='Zasungidwa pa browser imeneyi.'}catch(e){$('noteStatus').textContent='Sitingathe kusunga. Onani browser settings.'}}
+function loadNotes(){$('notes').value=localStorage.getItem('tommySuperNotes')||'';$('noteStatus').textContent='Zolemba zatsitsidwa.'}
+function clearNotes(){$('notes').value='';$('noteStatus').textContent='Bokosi lachotsedwa. Zolemba zosungidwa sizinasinthidwe.'}
+$('filePick').addEventListener('change',e=>{let f=e.target.files[0];$('fileInfo').textContent=f?`Dzina: ${f.name} | Kukula: ${(f.size/1024).toFixed(1)} KB | Mtundu: ${f.type||'osadziwika'}`:'Palibe fayilo yasankhidwa.'});
+let pattern=Array(16).fill(0).map((_,i)=>i%2===0?1:0),audio=null,timer=null,step=0;
+pattern.forEach((v,i)=>{let b=document.createElement('button');b.textContent=v?'●':'○';b.setAttribute('aria-label','Beat '+(i+1));b.onclick=()=>{pattern[i]=1-pattern[i];b.textContent=pattern[i]?'●':'○'};$('beatPad').appendChild(b)});
+function playBeat(){stopBeat();try{audio=new(window.AudioContext||window.webkitAudioContext)();step=0;timer=setInterval(()=>{if(pattern[step]){let o=audio.createOscillator(),g=audio.createGain();o.frequency.value=step%4===0?110:220;g.gain.setValueAtTime(.1,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.12);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.13)}step=(step+1)%16},180);$('beatStatus').textContent='Beat ikusewera.'}catch(e){$('beatStatus').textContent='Audio siyikupezeka mu browser imeneyi.'}}
+function stopBeat(){if(timer)clearInterval(timer);timer=null;if(audio){audio.close();audio=null}if($('beatStatus'))$('beatStatus').textContent='Beat yayimitsidwa.'}
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));
+loadNotes();runCode();
+</script>
+</body>
+</html>
